@@ -20,3 +20,14 @@ En canto a base de datos, recollerá todos os datos da páxina web que serán os
 4. Tabla de reinicio de contrasinais: No caso de que o usuario non lembre a súa contrasinal ofréceselle unha opción de volver a obter unha nova a través do "token" e o correo electrónico que se lle ofreceu na hora da súa creación.
 
 Finalmente, por motivos de seguridade e para evitar falla no sistema, sempre se ofrecerá un "erro 404" cando se quera acceder a información que non lle correspondera aos usuarios da páxina web.
+
+<img src="https://user-images.githubusercontent.com/89069423/154221139-d42f0e59-3832-46a1-96e5-1502ec9b28f6.png"/>
+<img src="https://user-images.githubusercontent.com/89069423/154221147-6bd9ad55-84c2-48c0-b57e-6e4357967781.png"/>
+<img src="https://user-images.githubusercontent.com/89069423/154221153-355c499e-fa6f-4618-8747-6ef06d3a34c0.png"/>
+
+
+
+
+
+
+
