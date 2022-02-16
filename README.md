@@ -1,64 +1,27 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+Blog de Publicacions con Laravel
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Para a seguinta tarefa, procederemos a creación dun blog donde se poderán escribir, subir e modificar posts por parte dos usuarios; ainda que tamén se poderán filtrar as publicacións por autor.Nesta caso, instalaremos Laravel através da consola con axuda do instalador Composer (composer create-project laravel/laravel {directory} 4.2 --prefer-dist) e unha vez instaladas tamen as dependecias procederemos a crear o blog.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Na primeira páxina, móstranse todos os artículos/publicacións publicados ata o momento, as cales se poden modificar ou borrar se o usuario (autor da publicación) o desexa. Tamén aparecen publicadas por orde e fecha de publicación, de maneira que, as publicacións mais novas son as que se colocaran nas primeiras posicións do blog. 
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+En canto as publicacións, terán enlaces ao autor para que se accedan directamente as publicacións que éste publicou con anterioridade por se fora de interese para o usuario; así como a outras publicacións da mesma índole. Como se pode comprobar, as publicacións e os usuarios foron creados de forma aleatoria de modo que carecen de contido xa que llo proporcionaría o propio usuario. Por outra banda, tamén se implementou un sistema de identificación de tal modo que na hora de publicar unha nova publicación, ésta se recolle automaticamente na base de datos dependendo do usuario, xa que cada un ten asignado un identificador único.
 
-## Learning Laravel
+Por parte dos usuarios; para evitar problemas de seguridade e que se produzan problemas de duplicados de usuarios ou usurpación de identidade, a cada usuario se lle identifica mediante unha identificación por correo electrónico que se lle envía cando o usuario se rexistra na páxina web, así como a necesidade dun nome de usuario e unha contrasinal que será única para cada un.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+**BASE DE DATOS:**
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+En canto a base de datos, recollerá todos os datos da páxina web que serán os seguintes:
 
-## Laravel Sponsors
+1. Tabla de Categorías: Xa que non todas as publicacions terán a mesma temática, ofrécese a posibilidade de crear unha categoría que se axuste ao tema da propia publicación.
+2. Usuarios: Tabla principal donde se recollen todos os datos necesarios dos usuarios como poden ser: o seu identificador único para recoñecerlle as publicacións que lle van asociadadas, o nome de usuario, a contrasinal, o nome da persoa, o seu correo electrónico, a verificación do correo electrónico, o "token" único para o usuario e as datas de creación e actualización das publicacións.
+3. Tabla de publicacións: Recolle a publicación creada polos usuarios, nela recóllese información como: o identificador que lle corresponde co autor da publiación, a  súa categoría,  o "rastro" que permitirá seguir a actualización ou modificación das publiacións, o título da publicación, o contido e as tamén as datas de creación e actualización.
+4. Tabla de reinicio de contrasinais: No caso de que o usuario non lembre a súa contrasinal ofréceselle unha opción de volver a obter unha nova a través do "token" e o correo electrónico que se lle ofreceu na hora da súa creación.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Finalmente, por motivos de seguridade e para evitar falla no sistema, sempre se ofrecerá un "erro 404" cando se quera acceder a información que non lle correspondera aos usuarios da páxina web.
 
-### Premium Partners
+<img src="https://user-images.githubusercontent.com/89069423/154221139-d42f0e59-3832-46a1-96e5-1502ec9b28f6.png"/>
+<img src="https://user-images.githubusercontent.com/89069423/154221147-6bd9ad55-84c2-48c0-b57e-6e4357967781.png"/>
+<img src="https://user-images.githubusercontent.com/89069423/154221153-355c499e-fa6f-4618-8747-6ef06d3a34c0.png"/>
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
